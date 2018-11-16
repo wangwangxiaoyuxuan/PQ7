@@ -63,14 +63,14 @@ def preprocess_words(words, stemmer):
     ??? What about numbers?
     ??? Some regex confusion, try: preprocess_words(['investigating?', './.[investigating]', 'invest9igating', 'InvestIgatin9g'], stemmer)
     """
-    word_stem_list = []
+    word_stem_list = set()
     for raw_word in words:
         print("raw_word: ", raw_word)
         word = re.search('[A-Za-z]*', raw_word).group(0)
         print("word: ", word)
         word_stem = stemmer.stem(word)
         print("word_stem: ", word_stem)
-        word_stem_list.append(word_stem)
+        word_stem_list.add(word_stem)
     print(word_stem_list)
     return word_stem_list
     #pass
@@ -112,7 +112,7 @@ def main():
     #     sentence_list.append(rtd_dict['sentence'])
 
     # word_stem_list = preprocess_words(sentence_list, stemmer)
-    # preprocess_words(['investigating?', 'pot', 'investigation.'], stemmer)
+    preprocess_words(['investigating?', 'pot', 'investigation.'], stemmer)
 
 
     # words, classes, docs = organize_raw_training_data(raw_training_data, stemmer)
